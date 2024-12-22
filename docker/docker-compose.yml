@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  product_app:
+    image: 'product-service:latest'
+    build:
+      context: ./..
+      dockerfile: ./docker/Dockerfile
+    container_name: product_app
+
+    depends_on:
+      - product_db
+    env_file:
+      - .env
+    ports:
+      - "8082:8080"
+      - "5007:5005"
+
+
+  product_db:
+    image: 'postgres:13.1-alpine'
+    container_name: product_db
+    env_file:
+      - .env
+    volumes:
+      - ../src/main/resources/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - product-db-data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+
+volumes:
+  product-db-data:
