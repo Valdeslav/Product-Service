@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/test")
 @SuppressWarnings("unused")
 public class TestController {
-    @GetMapping("access")
+    @GetMapping("/access")
     public String testAccess() {
         return "You have access!";
     }
