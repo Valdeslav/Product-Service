@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@SuppressWarnings("unused")
 public class JwtUserDetails implements UserDetails {
     @Getter(onMethod_ = {@Override})
     private final String username;

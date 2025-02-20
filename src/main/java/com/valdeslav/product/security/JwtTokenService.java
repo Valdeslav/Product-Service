@@ -47,6 +47,6 @@ public class JwtTokenService {
                 .parseSignedClaims(token)
                 .getPayload();
 
-        return new JwtUserDetails(claims.getSubject(), claims.get("roles", List.class));
+        return new JwtUserDetails(claims.getSubject(), (List<String>) claims.get("roles", List.class));
     }
 }
